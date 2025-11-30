@@ -25,7 +25,6 @@ a {
 } */
 
 body {
-  background: #020024;
   background: linear-gradient(135deg, #000851 0%, #1cb5e0 100%);
   margin: 0;
   display: flex;

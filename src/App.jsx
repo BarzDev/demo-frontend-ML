@@ -13,12 +13,12 @@ function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-white w-screen text-center pt-10 pb-5">
+      <h1 className="text-3xl md:text-4xl font-bold text-white w-screen text-center pt-10 pb-5">
         Hello world!
       </h1>
 
-      <div className="flex items-center justify-center  px-60 ">
-        <div className="container bg-white/80 p-10 rounded-2xl shadow-lg shadow-gray-200/60 mb-5">
+      <div className="flex items-center justify-center px-4 md:px-10 lg:px-20">
+        <div className="w-full max-w-2xl bg-white/80 p-6 md:p-10 rounded-2xl shadow-lg shadow-gray-200/60 mb-10">
           <TextAreaComponent />
 
           <ButtonComponent onClick={onClick} />

@@ -13,10 +13,9 @@ export const TextAreaComponent = () => {
       <textarea
         id="message"
         rows="4"
-        className="resize-none min-h-28 bg-neutral-secondary-medium border-2 text-heading 
-             block w-full p-3.5 placeholder:text-body rounded-2xl shadow-xs
-             border-sky-600 
-             focus:border-blue-800 focus:ring-0 focus:outline-none"
+        className="resize-none min-h-28 border-2 text-heading block w-full p-3.5 rounded-2xl
+                   border-sky-600 bg-neutral-secondary-medium placeholder:text-body shadow-xs
+                   focus:border-blue-800 focus:ring-0 focus:outline-none"
         placeholder={placeholder}
       ></textarea>
     </div>
