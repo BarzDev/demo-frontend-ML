@@ -6,9 +6,22 @@ import "./App.css";
 
 function App() {
   const [show, setShow] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [text, setText] = useState("");
+
+  const loremText = `
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  `;
 
   const onClick = () => {
-    setShow(!show);
+    setIsTyping(true);
+    setShow(false);
+
+    setTimeout(() => {
+      setText(loremText);
+      setShow(true);
+    }, 10);
   };
 
   return (
@@ -21,9 +34,11 @@ function App() {
         <div className="w-full max-w-2xl bg-white/80 p-6 md:p-10 rounded-2xl shadow-lg shadow-gray-200/60 mb-10">
           <TextAreaComponent />
 
-          <ButtonComponent onClick={onClick} />
+          <ButtonComponent onClick={onClick} disabled={isTyping} />
 
-          {show && <BoxResultComponent />}
+          {show && (
+            <BoxResultComponent onDone={() => setIsTyping(false)} text={text} />
+          )}
         </div>
       </div>
     </>
