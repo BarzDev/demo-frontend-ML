@@ -3,11 +3,13 @@ import { TextAreaComponent } from "./components/TextArea";
 import { ButtonComponent } from "./components/Button";
 import { BoxResultComponent } from "./components/BoxResult";
 import "./App.css";
+import { SpinnerComponent } from "./components/Spinner";
 
 function App() {
   const [show, setShow] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [text, setText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const loremText = `
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -16,12 +18,14 @@ function App() {
 
   const onClick = () => {
     setIsTyping(true);
+    setIsLoading(true);
     setShow(false);
 
     setTimeout(() => {
       setText(loremText);
+      setIsLoading(false);
       setShow(true);
-    }, 10);
+    }, 1000);
   };
 
   return (
@@ -34,7 +38,13 @@ function App() {
         <div className="w-full max-w-2xl bg-white/80 p-6 md:p-10 rounded-2xl shadow-lg shadow-gray-200/60 mb-10">
           <TextAreaComponent />
 
-          <ButtonComponent onClick={onClick} disabled={isTyping} />
+          <ButtonComponent onClick={onClick} disabled={isTyping || isLoading} />
+
+          {isLoading && (
+            <div className="flex justify-center my-4">
+              <SpinnerComponent />
+            </div>
+          )}
 
           {show && (
             <BoxResultComponent onDone={() => setIsTyping(false)} text={text} />
