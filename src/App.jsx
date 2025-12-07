@@ -38,7 +38,14 @@ function App() {
         <div className="w-full max-w-2xl bg-white/80 p-6 md:p-10 rounded-2xl shadow-lg shadow-gray-200/60 mb-10">
           <TextAreaComponent />
 
-          <ButtonComponent onClick={onClick} disabled={isTyping || isLoading} />
+          <div className="flex items-start justify-between">
+            <ButtonComponent
+              onClick={onClick}
+              disabled={isTyping || isLoading}
+            />
+
+            <span className="text-sm text-gray-500 me-3 mt-2">0 / 200</span>
+          </div>
 
           {isLoading && (
             <div className="flex justify-center my-4">

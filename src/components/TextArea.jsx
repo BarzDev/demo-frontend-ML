@@ -17,7 +17,7 @@ export const TextAreaComponent = () => {
                    border-sky-600 bg-neutral-secondary-medium placeholder:text-body shadow-xs
                    focus:border-blue-800 focus:ring-0 focus:outline-none"
         placeholder={placeholder}
-      ></textarea>
+      />
     </div>
   );
 };
