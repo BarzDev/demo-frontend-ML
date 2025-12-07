@@ -47,6 +47,7 @@ function App() {
             value={text}
             onChange={handleChange}
             maxChar={MAX_CHAR}
+            disabled={isTyping || isLoading}
           />
 
           <div className="flex items-start justify-between">
