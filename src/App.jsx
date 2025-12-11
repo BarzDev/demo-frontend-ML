@@ -47,6 +47,7 @@ function App() {
             value={text}
             onChange={handleChange}
             maxChar={MAX_CHAR}
+            isLoading={isLoading}
             disabled={isTyping || isLoading}
           />
 

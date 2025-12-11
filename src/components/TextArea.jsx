@@ -1,4 +1,10 @@
-export const TextAreaComponent = ({ value, onChange, maxChar, disabled }) => {
+export const TextAreaComponent = ({
+  value,
+  onChange,
+  maxChar,
+  disabled,
+  isLoading,
+}) => {
   const placeholder = "Write your thoughts here...";
 
   return (
@@ -17,9 +23,10 @@ export const TextAreaComponent = ({ value, onChange, maxChar, disabled }) => {
         value={value}
         onChange={onChange}
         disabled={disabled}
-        className="resize-none min-h-28 border-2 text-heading block w-full p-3.5 rounded-2xl
-                   border-sky-600 bg-neutral-secondary-medium placeholder:text-body shadow-xs
-                   focus:border-blue-800 focus:ring-0 focus:outline-none"
+        className={`resize-none min-h-28 border-2 text-heading block w-full p-3.5 rounded-2xl
+                    bg-neutral-secondary-medium placeholder:text-body shadow-xs
+                   focus:border-blue-800 focus:ring-0 focus:outline-none 
+                    ${isLoading ? "border-gray-400" : "border-sky-600"}`}
         placeholder={placeholder}
       />
     </div>
