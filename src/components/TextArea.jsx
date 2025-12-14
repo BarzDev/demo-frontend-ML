@@ -1,11 +1,12 @@
 export const TextAreaComponent = ({
-  value,
+  text,
   onChange,
-  maxChar,
   disabled,
   isLoading,
+  onGetResult,
 }) => {
   const placeholder = "Write your thoughts here...";
+  const maxChar = 200;
 
   return (
     <div>
@@ -20,7 +21,7 @@ export const TextAreaComponent = ({
         id="message"
         rows="4"
         maxLength={maxChar}
-        value={value}
+        value={text}
         onChange={onChange}
         disabled={disabled}
         className={`resize-none min-h-28 border-2 text-heading block w-full p-3.5 rounded-2xl
@@ -29,6 +30,21 @@ export const TextAreaComponent = ({
                     ${isLoading ? "border-gray-400" : "border-sky-600"}`}
         placeholder={placeholder}
       />
+
+      <div className="flex items-start justify-between">
+        <button
+          onClick={onGetResult}
+          disabled={disabled}
+          className={`px-4 py-2 rounded-lg text-white  my-2
+        ${disabled ? "bg-gray-400 " : "bg-blue-600 hover:bg-blue-700"}`}
+        >
+          Generate
+        </button>
+
+        <span className="text-sm text-gray-500 me-3 mt-2">
+          {text.length} / {maxChar}
+        </span>
+      </div>
     </div>
   );
 };
