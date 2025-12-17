@@ -28,8 +28,9 @@ export const PromtSection = () => {
     }, 1000);
   };
   return (
-    <div className="h-dvh min-w-screen">
-      <div className="flex items-center justify-center px-4 md:px-10 lg:px-20 border">
+    <div className="h-dvh flex items-center justify-center flex-col">
+      <h2 className="text-white pb-5 text-2xl font-bold">Promt</h2>
+      <div className="flex items-center justify-center px-4 md:px-10 lg:px-20 min-w-screen">
         <div className="w-full max-w-2xl bg-white/80 p-6 md:p-10 rounded-2xl shadow-lg shadow-gray-200/60 mb-10">
           <TextAreaComponent
             text={text}
