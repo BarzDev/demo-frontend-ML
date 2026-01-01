@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BoxResultComponent } from "../components/BoxResult";
 import { SpinnerComponent } from "../components/Spinner";
 import { TextAreaComponent } from "../components/TextArea";
+import { textResponse } from "../../utils/textRepsonse";
 
 export const PromtSection = () => {
   const [show, setShow] = useState(false);
@@ -11,22 +12,47 @@ export const PromtSection = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loremText = `
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  `;
+  const fetchModel = async () => {
+    try {
+      const url = "http://127.0.0.1:8000/api/recommendations/";
 
-  const onGetResult = () => {
+      // const user_persona =
+      //   "Saya merupakan mahasiswa fresh graduate yang memiliki ketertarikan besar di bidang kreatif dan media. Selama masa perkuliahan, saya aktif mempelajari dasar-dasar desain visual, produksi konten digital, dan komunikasi kreatif. Saya terbiasa mengerjakan tugas kuliah yang berkaitan dengan pembuatan konten media sosial, desain poster, presentasi visual, serta penulisan konten sederhana. Saya memiliki minat kuat pada storytelling visual dan bagaimana sebuah pesan dapat disampaikan secara menarik kepada audiens. Saya terbiasa bekerja dengan tools desain dasar dan senang mengikuti tren media digital serta perkembangan platform sosial. Sebagai fresh graduate, saya terbuka untuk belajar, menerima masukan, dan mengembangkan kemampuan kreatif saya melalui pengalaman kerja di industri kreatif dan media.";
+
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user_persona: text }),
+      });
+      const data = await res.json();
+
+      const label = data.recommendations.predicted_job_field.labels;
+      const faiss = data.recommendations.faiss;
+      const skill = data.recommendations.skill_gap;
+
+      // console.log(data);
+      // console.log(label);
+      // console.log(faiss);
+      // console.log(skill);
+      setResult(textResponse(label, faiss, skill));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onGetResult = async () => {
     setIsTyping(true);
     setIsLoading(true);
     setShow(false);
 
-    setTimeout(() => {
-      setResult(loremText);
-      setIsLoading(false);
-      setShow(true);
-    }, 1000);
+    await fetchModel();
+
+    setIsLoading(false);
+    setShow(true);
   };
+
   return (
     <div className="h-dvh flex items-center justify-center flex-col">
       <h2 className="text-white pb-5 text-2xl font-bold">Promt</h2>

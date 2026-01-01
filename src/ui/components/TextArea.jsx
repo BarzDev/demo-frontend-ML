@@ -6,7 +6,7 @@ export const TextAreaComponent = ({
   onGetResult,
 }) => {
   const placeholder = "Write your thoughts here...";
-  const maxChar = 200;
+  const maxChar = 1000;
 
   return (
     <div>
