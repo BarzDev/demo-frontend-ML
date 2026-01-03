@@ -38,9 +38,9 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   margin: 0;
-  display: flex;
+  /* display: flex;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100vh; */
   overflow-x: hidden;
 }
 

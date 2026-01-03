@@ -50,10 +50,12 @@ export const PromtSection = () => {
   };
 
   return (
-    <div className="h-dvh flex items-center justify-center flex-col">
-      <h2 className="text-white pb-5 text-2xl font-bold">Promt</h2>
-      <div className="flex items-center justify-center px-4 md:px-10 lg:px-20 min-w-screen">
-        <div className="w-full max-w-2xl bg-white/80 p-6 md:p-10 rounded-2xl shadow-lg shadow-gray-200/60 mb-10">
+    <section className="min-h-screen flex flex-col">
+      <h2 className="text-white py-6 text-xl sm:text-2xl font-bold text-center">
+        Promt
+      </h2>
+      <div className="flex justify-center px-4">
+        <div className="w-full max-w-4xl mx-auto bg-white/80 p-4 sm:p-6 md:p-10 rounded-2xl shadow-lg shadow-gray-200/60 mb-10">
           <TextAreaComponent
             text={text}
             onChange={(e) => setText(e.target.value)}
@@ -76,6 +78,6 @@ export const PromtSection = () => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
