@@ -5,7 +5,7 @@ export const BoxResultComponent = ({ onDone, result }) => {
   const [step, setStep] = useState(0);
 
   return (
-    <div className="border-2 p-4 border-sky-600 rounded-xl text-sm md:text-base leading-relaxed space-y-2">
+    <div className="border-2 p-4 border-amber-400 rounded-xl text-sm md:text-base leading-relaxed space-y-2">
       <TypeAnimation
         sequence={[result.labels, () => setStep(1)]}
         wrapper="div"

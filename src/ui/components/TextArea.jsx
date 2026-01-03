@@ -26,8 +26,8 @@ export const TextAreaComponent = ({
         disabled={disabled}
         className={`resize-none min-h-28 border-2 text-heading block w-full p-3.5 rounded-2xl
                     bg-neutral-secondary-medium placeholder:text-body shadow-xs
-                   focus:border-blue-800 focus:ring-0 focus:outline-none 
-                    ${isLoading ? "border-gray-400" : "border-sky-600"}`}
+                   focus:border-amber-600 focus:ring-0 focus:outline-none 
+                    ${isLoading ? "border-gray-400" : "border-amber-400"}`}
         placeholder={placeholder}
       />
 
@@ -36,7 +36,7 @@ export const TextAreaComponent = ({
           onClick={onGetResult}
           disabled={disabled}
           className={`px-4 py-2 rounded-lg text-white  my-2
-        ${disabled ? "bg-gray-400 " : "bg-blue-600 hover:bg-blue-700"}`}
+        ${disabled ? "bg-gray-400 " : "bg-amber-500 hover:bg-amber-600"}`}
         >
           Generate
         </button>
