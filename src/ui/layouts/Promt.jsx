@@ -8,7 +8,7 @@ import { textResponse } from "../../utils/textRepsonse";
 export const PromtSection = () => {
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -16,27 +16,23 @@ export const PromtSection = () => {
     try {
       const url = "http://127.0.0.1:8000/api/recommendations/";
 
-      // const user_persona =
-      //   "Saya merupakan mahasiswa fresh graduate yang memiliki ketertarikan besar di bidang kreatif dan media. Selama masa perkuliahan, saya aktif mempelajari dasar-dasar desain visual, produksi konten digital, dan komunikasi kreatif. Saya terbiasa mengerjakan tugas kuliah yang berkaitan dengan pembuatan konten media sosial, desain poster, presentasi visual, serta penulisan konten sederhana. Saya memiliki minat kuat pada storytelling visual dan bagaimana sebuah pesan dapat disampaikan secara menarik kepada audiens. Saya terbiasa bekerja dengan tools desain dasar dan senang mengikuti tren media digital serta perkembangan platform sosial. Sebagai fresh graduate, saya terbuka untuk belajar, menerima masukan, dan mengembangkan kemampuan kreatif saya melalui pengalaman kerja di industri kreatif dan media.";
+      const user_persona =
+        "Saya merupakan mahasiswa fresh graduate yang memiliki ketertarikan besar di bidang kreatif dan media. Selama masa perkuliahan, saya aktif mempelajari dasar-dasar desain visual, produksi konten digital, dan komunikasi kreatif. Saya terbiasa mengerjakan tugas kuliah yang berkaitan dengan pembuatan konten media sosial, desain poster, presentasi visual, serta penulisan konten sederhana. Saya memiliki minat kuat pada storytelling visual dan bagaimana sebuah pesan dapat disampaikan secara menarik kepada audiens. Saya terbiasa bekerja dengan tools desain dasar dan senang mengikuti tren media digital serta perkembangan platform sosial. Sebagai fresh graduate, saya terbuka untuk belajar, menerima masukan, dan mengembangkan kemampuan kreatif saya melalui pengalaman kerja di industri kreatif dan media.";
 
       const res = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ user_persona: text }),
+        body: JSON.stringify({ user_persona }),
+        // body: JSON.stringify({ user_persona: text }),
       });
       const data = await res.json();
 
-      const label = data.recommendations.predicted_job_field.labels;
-      const faiss = data.recommendations.faiss;
-      const skill = data.recommendations.skill_gap;
+      const result = textResponse(data);
 
-      // console.log(data);
-      // console.log(label);
-      // console.log(faiss);
-      // console.log(skill);
-      setResult(textResponse(label, faiss, skill));
+      setResult(result);
+      // setResult(user_persona);
     } catch (error) {
       console.log(error);
     }
