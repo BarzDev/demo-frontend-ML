@@ -8,7 +8,7 @@ import { textResponse } from "../../utils/textRepsonse";
 export const PromtSection = () => {
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState({});
   const [isTyping, setIsTyping] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,8 +32,10 @@ export const PromtSection = () => {
       const result = textResponse(data);
 
       setResult(result);
-      // setResult(user_persona);
     } catch (error) {
+      setResult({
+        error: true,
+      });
       console.log(error);
     }
   };
