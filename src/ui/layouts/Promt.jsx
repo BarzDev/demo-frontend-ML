@@ -18,6 +18,14 @@ export const PromtSection = () => {
     "Saya merupakan mahasiswa fresh graduate yang memiliki ketertarikan besar di bidang kreatif dan media. Selama masa perkuliahan, saya aktif mempelajari dasar-dasar desain visual, produksi konten digital, dan komunikasi kreatif. Saya terbiasa mengerjakan tugas kuliah yang berkaitan dengan pembuatan konten media sosial, desain poster, presentasi visual, serta penulisan konten sederhana. Saya memiliki minat kuat pada storytelling visual dan bagaimana sebuah pesan dapat disampaikan secara menarik kepada audiens. Saya terbiasa bekerja dengan tools desain dasar dan senang mengikuti tren media digital serta perkembangan platform sosial. Sebagai fresh graduate, saya terbuka untuk belajar, menerima masukan, dan mengembangkan kemampuan kreatif saya melalui pengalaman kerja di industri kreatif dan media.";
 
   const fetchModel = async () => {
+    if (!text || text.trim() === "") {
+      setResult({
+        error: true,
+        msg: "Ooppss.. deskripsi diri tidak boleh kosong",
+      });
+      return;
+    }
+
     try {
       const res = await fetch(api, {
         method: "POST",
@@ -34,6 +42,7 @@ export const PromtSection = () => {
     } catch (err) {
       setResult({
         error: true,
+        msg: "Ooppss.. terjadi kesalahan pada server",
       });
 
       console.log(err);

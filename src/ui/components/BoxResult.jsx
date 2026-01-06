@@ -3,13 +3,12 @@ import { TypeAnimation } from "react-type-animation";
 
 export const BoxResultComponent = ({ onDone, result }) => {
   const [step, setStep] = useState(0);
-  const errMsg = "oops terjadi kesalahan";
 
   if (result.error) {
     return (
       <div className="border-2 p-4 border-amber-400 rounded-xl text-sm md:text-base leading-relaxed space-y-2">
         <TypeAnimation
-          sequence={[errMsg, () => onDone()]}
+          sequence={[result.msg, () => onDone()]}
           wrapper="div"
           repeat={0}
           cursor={false}
