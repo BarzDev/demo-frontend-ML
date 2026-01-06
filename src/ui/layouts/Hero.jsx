@@ -1,4 +1,4 @@
-export const HeroSection = () => {
+export const HeroSection = ({ onScroll }) => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
       <div className="text-white max-w-4xl">
@@ -21,15 +21,17 @@ export const HeroSection = () => {
 
       <div className="mt-6">
         <button
-          onClick={() => alert("hello")}
+          onClick={onScroll}
           className="
             px-6 py-3
             rounded-xl
             border border-white/60
             text-white
             text-sm sm:text-base
-            hover:bg-white/10
+            bg-white/10
+            hover:bg-white/30
             transition
+            cursor-pointer
           "
         >
           Coba Analisis

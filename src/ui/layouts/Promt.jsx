@@ -35,6 +35,8 @@ export const PromtSection = () => {
       setResult({
         error: true,
       });
+
+      console.log(err);
     }
   };
 
@@ -50,7 +52,7 @@ export const PromtSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col">
+    <section className="min-h-screen flex flex-col" id="promt">
       <h2 className="text-white py-6 text-xl sm:text-2xl font-bold text-center">
         Promt
       </h2>

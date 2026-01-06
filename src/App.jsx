@@ -4,9 +4,13 @@ import { HeroSection } from "./ui/layouts/Hero";
 import { StatisticSection } from "./ui/layouts/Statistic";
 
 function App() {
+  const scrollToPromt = () => {
+    const promt = document.getElementById("promt");
+    promt.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <>
-      <HeroSection />
+      <HeroSection onScroll={scrollToPromt} />
       <StatisticSection />
       <PromtSection />
     </>
