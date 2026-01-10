@@ -3,7 +3,7 @@ import SkillBarChart from "../components/SkillBarChart";
 import { TabComponent } from "../components/Tab";
 import { OverviewComponent } from "../components/Overview";
 
-export const OverviewSection = () => {
+export const OverviewSection = ({ ref }) => {
   const tabs = [
     {
       key: "1",
@@ -29,7 +29,7 @@ export const OverviewSection = () => {
   const content = tabs.find((tab) => tab.key === activeTab);
 
   return (
-    <section className="min-h-screen bg-white/50 p-4" id="overview">
+    <section className="min-h-screen bg-white/50 p-4" id="overview" ref={ref}>
       <div
         className="
     flex flex-col gap-4
