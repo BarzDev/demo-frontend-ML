@@ -1,7 +1,7 @@
 export const HeroSection = ({ onScroll }) => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
-      <div className="text-white max-w-4xl">
+      <div className="text-white max-w-4xl cursor-default">
         <h1
           className="font-bold leading-tight
           text-3xl

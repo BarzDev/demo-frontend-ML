@@ -39,8 +39,8 @@ const SkillBarChart = () => {
 
   const gradient = (ctx) => {
     const g = ctx.createLinearGradient(0, 0, 600, 0);
-    g.addColorStop(0, "#f37335");
-    g.addColorStop(1, "#fdc830");
+    g.addColorStop(0, "#373b44");
+    g.addColorStop(1, "#4286f4");
     return g;
   };
 
