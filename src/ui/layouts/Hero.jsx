@@ -1,4 +1,12 @@
-export const HeroSection = ({ onScroll }) => {
+import { BookOpenText } from "lucide-react";
+
+export const HeroSection = () => {
+  const scroll = (id) => {
+    id.scrollIntoView({ behavior: "smooth" });
+  };
+  const promt = document.getElementById("prompt");
+  const overview = document.getElementById("overview");
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-4 text-center">
       <div className="text-white max-w-4xl cursor-default">
@@ -15,13 +23,13 @@ export const HeroSection = ({ onScroll }) => {
         </h1>
 
         <h2 className="mt-3 text-base sm:text-lg md:text-xl lg:text-2xl text-white/90">
-          Sistem Rekomendasi Jalur Karier Berbasis Keahlian
+          Sistem Rekomendasi Jalur Karier Berbasis Machine Learning
         </h2>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 flex gap-3">
         <button
-          onClick={onScroll}
+          onClick={() => scroll(promt)}
           className="
             px-6 py-3
             rounded-xl
@@ -35,6 +43,23 @@ export const HeroSection = ({ onScroll }) => {
           "
         >
           Coba Analisis
+        </button>
+
+        <button
+          onClick={() => scroll(overview)}
+          className="
+            px-6 py-3
+            rounded-xl
+            text-(--primary)
+            hover:text-white
+            text-sm sm:text-base
+            bg-white
+            hover:bg-white/30
+            transition
+            cursor-pointer
+          "
+        >
+          <BookOpenText size={25} />
         </button>
       </div>
     </section>

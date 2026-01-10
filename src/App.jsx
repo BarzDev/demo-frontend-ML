@@ -1,17 +1,13 @@
 import "./App.css";
 import { PromptSection } from "./ui/layouts/Prompt";
 import { HeroSection } from "./ui/layouts/Hero";
-import { StatisticSection } from "./ui/layouts/Statistic";
+import { OverviewSection } from "./ui/layouts/Overview";
 
 function App() {
-  const scrollToPromt = () => {
-    const promt = document.getElementById("prompt");
-    promt.scrollIntoView({ behavior: "smooth" });
-  };
   return (
     <>
-      <HeroSection onScroll={scrollToPromt} />
-      <StatisticSection />
+      <HeroSection />
+      <OverviewSection />
       <PromptSection />
     </>
   );

@@ -3,7 +3,7 @@ import SkillBarChart from "../components/SkillBarChart";
 import { TabComponent } from "../components/Tab";
 import { OverviewComponent } from "../components/Overview";
 
-export const StatisticSection = () => {
+export const OverviewSection = () => {
   const tabs = [
     {
       key: "1",
@@ -21,6 +21,7 @@ export const StatisticSection = () => {
       key: "3",
       label: "Analisis Pendidikan",
       title: "Distribusi Tingkat Pendidikan",
+      content: <EmptyField />,
     },
   ];
 
@@ -28,7 +29,7 @@ export const StatisticSection = () => {
   const content = tabs.find((tab) => tab.key === activeTab);
 
   return (
-    <section className="min-h-screen bg-white/50 p-4">
+    <section className="min-h-screen bg-white/50 p-4" id="overview">
       <div
         className="
     flex flex-col gap-4
@@ -57,7 +58,7 @@ export const StatisticSection = () => {
 
       <div className="flex items-center justify-center">
         <div
-          className="w-full max-w-6xl bg-white/80 rounded-2xl  shadow-lg
+          className="w-full max-w-6xl bg-white/80 rounded-2xl shadow-lg
         min-h-[400px]
         md:min-h-[450px]
       "
@@ -66,5 +67,13 @@ export const StatisticSection = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const EmptyField = () => {
+  return (
+    <div className="flex items-center justify-center h-full font-bold text-3xl pt-32">
+      Belum ada data
+    </div>
   );
 };
