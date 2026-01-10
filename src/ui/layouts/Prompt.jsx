@@ -65,7 +65,11 @@ export const PromptSection = ({ ref }) => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col" id="prompt" ref={ref}>
+    <section
+      className="min-h-screen flex flex-col cursor-default"
+      id="prompt"
+      ref={ref}
+    >
       <h2 className="text-white py-6 text-xl sm:text-2xl font-bold text-center">
         Yukk.. Analisis dirimu
       </h2>

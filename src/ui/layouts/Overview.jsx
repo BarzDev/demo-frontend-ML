@@ -58,7 +58,7 @@ export const OverviewSection = ({ ref }) => {
 
       <div className="flex items-center justify-center">
         <div
-          className="w-full max-w-6xl bg-white/80 rounded-2xl shadow-lg
+          className="w-full max-w-6xl bg-white/80 rounded-2xl shadow-lg cursor-default
         min-h-[400px]
         md:min-h-[450px]
       "
