@@ -1,20 +1,24 @@
+import { Eraser } from "lucide-react";
+
 export const TextAreaComponent = ({
   text,
   onChange,
   disabled,
   isLoading,
   onGetResult,
+  onClear,
 }) => {
-  const placeholder = "Write your thoughts here...";
+  const placeholder =
+    "Ceritakan latar belakang, pengalaman, serta keterampilan yang Anda miliki, termasuk bidang kerja dan aktivitas yang sering Anda lakukan.";
   const maxChar = 1000;
 
   return (
     <div>
       <label
         htmlFor="message"
-        className="block mb-2.5 font-medium text-heading"
+        className="block mb-2.5 font-medium text-heading ms-1"
       >
-        Describe yourself
+        Deskripsikan dirimu
       </label>
 
       <textarea
@@ -32,14 +36,32 @@ export const TextAreaComponent = ({
       />
 
       <div className="flex items-start justify-between">
-        <button
-          onClick={onGetResult}
-          disabled={disabled}
-          className={`px-4 py-2 rounded-lg text-white cursor-pointer my-2
-        ${disabled ? "bg-gray-400 " : "bg-(--light) hover:bg-(--primary)"}`}
-        >
-          Generate
-        </button>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={onGetResult}
+            disabled={disabled}
+            className={`px-4 py-2 rounded-lg text-white  my-2
+            ${
+              disabled
+                ? "bg-gray-400 cursor-default "
+                : "bg-(--light) hover:bg-(--primary) cursor-pointer"
+            }`}
+          >
+            Analisis
+          </button>
+
+          <div
+            onClick={onClear}
+            className={`p-2 rounded-lg text-white
+              ${
+                disabled
+                  ? "bg-rose-300 cursor-default"
+                  : " bg-rose-500 hover:bg-rose-700 cursor-pointer "
+              }`}
+          >
+            <Eraser />
+          </div>
+        </div>
 
         <span className="text-sm text-gray-500 me-3 mt-2">
           {text.length} / {maxChar}

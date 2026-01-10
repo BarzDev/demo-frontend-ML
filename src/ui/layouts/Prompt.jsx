@@ -5,7 +5,7 @@ import { SpinnerComponent } from "../components/Spinner";
 import { TextAreaComponent } from "../components/TextArea";
 import { textResponse } from "../../utils/textRepsonse";
 
-export const PromtSection = () => {
+export const PromptSection = () => {
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
   const [result, setResult] = useState({});
@@ -27,7 +27,7 @@ export const PromtSection = () => {
     }
 
     try {
-      const res = await fetch(api, {
+      const res = await fetch(api ? api : local, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,10 +60,14 @@ export const PromtSection = () => {
     setShow(true);
   };
 
+  const clear = () => {
+    setText("");
+  };
+
   return (
-    <section className="min-h-screen flex flex-col" id="promt">
+    <section className="min-h-screen flex flex-col" id="prompt">
       <h2 className="text-white py-6 text-xl sm:text-2xl font-bold text-center">
-        Promt
+        Yukk.. Analisis dirimu
       </h2>
       <div className="flex justify-center px-4">
         <div className="w-full max-w-4xl mx-auto bg-white/80 p-4 sm:p-6 md:p-10 rounded-2xl shadow-lg shadow-gray-200/60 mb-10">
@@ -73,6 +77,7 @@ export const PromtSection = () => {
             isLoading={isLoading}
             disabled={isTyping || isLoading}
             onGetResult={() => onGetResult()}
+            onClear={() => clear()}
           />
 
           {isLoading && (
