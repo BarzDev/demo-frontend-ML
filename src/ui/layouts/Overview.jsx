@@ -21,7 +21,7 @@ export const OverviewSection = ({ ref }) => {
     {
       key: "3",
       label: "Analisis Pendidikan",
-      title: "Distribusi Tingkat Pendidikan",
+      title: "Kebutuhan Pendidikan",
       content: <EduBarChart />,
     },
   ];
