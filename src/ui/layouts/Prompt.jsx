@@ -4,6 +4,7 @@ import { BoxResultComponent } from "../components/BoxResult";
 import { SpinnerComponent } from "../components/Spinner";
 import { TextAreaComponent } from "../components/TextArea";
 import { textResponse } from "../../utils/textRepsonse";
+import { validate } from "../../utils/validate";
 
 export const PromptSection = ({ ref }) => {
   const [show, setShow] = useState(false);
@@ -18,13 +19,8 @@ export const PromptSection = ({ ref }) => {
     "Saya memiliki pengalaman di bidang manufaktur dan operasional, dengan fokus pada pengawasan proses produksi dan efisiensi kerja. Saya terbiasa bekerja di lingkungan yang terstruktur dengan prosedur yang jelas. Saya memahami pentingnya kualitas produk, keselamatan kerja, dan kelancaran operasional dalam proses manufaktur. Saya sering terlibat dalam pemantauan proses produksi, koordinasi dengan tim, serta memastikantarget operasional tercapai. Saya terbiasa bekerja dengan jadwal dan target yang ketat, serta memahami pentingnya kerja sama tim dalam lingkungan produksi. Saya tertarik pada peningkatan efisiensi proses dan optimalisasi operasional. Saya percaya bahwa perbaikan kecil yang konsisten dapat memberikan dampak besar pada produktivitas. Saya ingin terus berkembang di bidang manufacturing dan operations dengan fokus pada proses yang efektif dan berkelanjutan.";
 
   const fetchModel = async () => {
-    if (!text || text.trim() === "") {
-      setResult({
-        error: true,
-        msg: "Ooppss.. deskripsi diri tidak boleh kosong",
-      });
-      return;
-    }
+    const val = validate(text);
+    if (val.error) return setResult(val);
 
     try {
       const res = await fetch(api ? api : local, {
