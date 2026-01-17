@@ -1,5 +1,5 @@
 export const textResponse = (data) => {
-  const labels = data.recommendations.predicted_job_field.labels;
+  let labels = data.recommendations.predicted_job_field.labels;
   const faiss = data.recommendations.faiss
     .map((item, index) => `${index + 1}. ${item.job_title}`)
     .join("\n");
@@ -7,6 +7,7 @@ export const textResponse = (data) => {
     .map((item) => `${item.skill} (${(item.final_score * 100).toFixed(0)}%)`)
     .join(", ");
 
+  labels = labels === "Other" ? "General / Umum" : labels;
   const role = jobRole(labels);
   const jobRecommend = recommendJob(faiss);
   const skillRecommend = recommendSkill(skill, labels);
