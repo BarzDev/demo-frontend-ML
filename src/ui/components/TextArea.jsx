@@ -63,11 +63,14 @@ export const TextAreaComponent = ({
           </div>
         </div>
 
-        <span
-          className={`text-sm me-3 mt-2
-            ${text.length < 400 ? "text-rose-500" : " text-green-500"}`}
-        >
-          {text.length} / {maxChar}
+        <span className="text-sm me-3 mt-2 flex">
+          <p
+            className={`pe-1 ${text.length < 400 ? "text-rose-500" : " text-(--primary)"}`}
+          >
+            {text.length}
+          </p>
+
+          <p className="text-(--primary)">/ {maxChar}</p>
         </span>
       </div>
     </div>
