@@ -8,11 +8,13 @@ export const textResponse = (data) => {
     .join(", ");
 
   labels = labels === "Other" ? "General / Umum" : labels;
-  const role = jobRole(labels);
-  const jobRecommend = recommendJob(faiss);
-  const skillRecommend = recommendSkill(skill, labels);
+  const textRole = jobRole(labels);
+  const textRecommendJob = recommendJob(faiss);
+  const textRecommendSkill = recommendSkill(skill, labels);
 
-  return { role, jobRecommend, skillRecommend };
+  const analyzeResult = `${textRole} \n\n ${textRecommendJob} \n\n ${textRecommendSkill}`;
+
+  return { analyzeResult };
 };
 
 const jobRole = (label) => {
@@ -41,10 +43,10 @@ const recommendJob = (faiss) => {
 
 const recommendSkill = (skills, label) => {
   const templates = {
-    a: `Beberapa skill utama yang paling dominan dan perlu terus dikembangkan antara lain ${skills}.`,
-    b: `Hasil analisis menunjukkan bahwa skill seperti ${skills} menjadi kekuatan utama kamu di bidang ${label}.`,
-    c: `Penguasaan skill ${skills} sangat mendukung kesiapan kamu di bidang ${label}.`,
-    d: `Untuk memperkuat posisi kamu di bidang ${label}, fokus pengembangan skill ${skills} sangat disarankan.`,
+    a: `Beberapa skill utama yang paling dominan dan perlu terus dikembangkan antara lain, ${skills}.`,
+    b: `Hasil analisis menunjukkan bahwa skill seperti : ${skills} menjadi kekuatan utama kamu di bidang ${label}.`,
+    c: `Penguasaan skill : ${skills} sangat mendukung kesiapan kamu di bidang ${label}.`,
+    d: `Untuk memperkuat posisi kamu di bidang ${label}, fokus pengembangan skill : ${skills} sangat disarankan.`,
   };
 
   const keys = Object.keys(templates);
